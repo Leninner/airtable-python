@@ -19,4 +19,13 @@ sleep(1)
 
 pyautogui.hotkey("ctrl", "v")
 
+pyautogui.hotkey("enter")
+pyautogui.hotkey("alt", "tab")
+
+sleep(1)
+
+copiar = open("C:/Users/USUARIO/Desktop/cambios.txt", "a+", encoding="utf8")
+copiar.write(clipboard.paste())
+
 archivo.close()
+
