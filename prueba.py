@@ -28,4 +28,4 @@ copiar = open("C:/Users/USUARIO/Desktop/cambios.txt", "a+", encoding="utf8")
 copiar.write(clipboard.paste())
 
 archivo.close()
-
+driver.quit()

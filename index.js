@@ -66,6 +66,8 @@ const marketing = [
   'diseñadora',
   'comunicación',
   'comunicacion',
+  'designer',
+  'packaging',
 ];
 const innovacion = ['scrum', 'CTO', 'innovación', 'innovacion', 'product', 'owner', 'associate'];
 const logistica = ['logistica', 'logística', 'bodega', 'calidad'];
@@ -107,31 +109,58 @@ const industria = ['Confidencial', 'Comercial', 'Servicios', 'Industrial'];
 
 const citiesAndProvinces = [
   'ambato',
+  'samborondón',
   'cuenca',
   'quito',
   'quayaquil',
-  'pichincha',
-  'tungurahua',
+  'tumbaco',
   'manta',
   'remoto',
   'teletrabajo',
-  'durán',
-  'duran',
   'machala',
   'santo domingo',
+  'quevedo',
+  'sangolquí',
+  'manabí',
+  'latacunga',
+  'loja',
+  'durán',
+  'riobamba',
+  'esmeraldas',
+  'cayambe',
+  'ibarra',
+  'rumiñahui',
+  'los ríos',
+  'paute',
+  'baños',
+  'portoviejo',
+  'galápagos',
+  'pifo',
+  'el oro',
+  'azuay',
+  'carchi',
+  'pichincha',
+  'ecuador',
+  'tungurahua',
 ];
 
 const isUbicacion = (ubicacion) => {
-  let citie;
+  let citie = '';
 
   for (let i = 0; i < citiesAndProvinces.length; i++) {
     if (ubicacion.toLowerCase().includes(citiesAndProvinces[i]) === true) {
-      citie = citiesAndProvinces[i].charAt(0).toUpperCase() + citiesAndProvinces[i].slice(1);
+      if (citiesAndProvinces[i].split(' ').length > 1) {
+        citiesAndProvinces[i].split(' ').forEach((word) => {
+          citie += word.charAt(0).toUpperCase() + word.slice(1) + ' ';
+        });
+      } else {
+        citie = citiesAndProvinces[i].charAt(0).toUpperCase() + citiesAndProvinces[i].slice(1);
+      }
       break;
     }
   }
 
-  return citie;
+  return citie.trimEnd();
 };
 
 function isArea(vacante) {
@@ -176,7 +205,7 @@ const getChildElementCount = (value, empleo) => {
       ? empleo.children[0].children[2].children[0].outerText
       : empleo.children[0].children[2].children[1].outerText;
   } else {
-    return value === 'empresa'
+    return value === 'vacante'
       ? empleo.children[0].children[1].children[0].outerText
       : empleo.children[0].children[1].children[1].outerText;
   }
