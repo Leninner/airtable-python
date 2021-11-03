@@ -361,7 +361,39 @@ function multitrabajosFindJobs() {
 
 // TODO: Función para empleos de Computrabajos
 function computrabajosFindJobs() {
-  const datos = document.querySelectorAll('.iO');
+  let empleosOfComputrabajos = [];
+  const listaEmpleos = document.querySelectorAll('.iO');
+
+  listaEmpleos.forEach((empleo) => {
+    let vacante = '';
+    let empresa = '';
+    let ubicacion = '';
+    let linkOfJob = '';
+    if (empleo.childElementCount > 4) {
+      vacante = empleo.children[1].outerText;
+      empresa = empleo.children[2].children[0].outerText;
+      ubicacion = empleo.children[2].children[1].outerText;
+      linkOfJob = empleo.children[1].children[0].href;
+    } else {
+      vacante = empleo.children[0].outerText;
+      empresa = empleo.children[1].children[0].outerText;
+      ubicacion = empleo.children[1].children[1].outerText;
+      linkOfJob = empleo.children[0].children[0].href;
+    }
+
+    empleosOfComputrabajos.push({
+      'Fecha de Publicación de la Vacante': getDate(),
+      Cargo: vacante,
+      Area: isArea(vacante),
+      Empresa: empresa,
+      Industria: industria[Math.floor(Math.random() * industria.length)],
+      'Link de la Oferta': linkOfJob,
+      Nivel: isNivel(vacante),
+      Ubicación: getUbicacion(ubicacion),
+    });
+  });
+
+  return empleosOfComputrabajos;
 }
 
 const URL = window.location.href;
