@@ -126,6 +126,7 @@ const citiesAndProvinces = [
   'guayaquil',
   'tumbaco',
   'manta',
+  'coca',
   'remoto',
   'teletrabajo',
   'machala',
@@ -144,6 +145,8 @@ const citiesAndProvinces = [
   'rumiñahui',
   'los ríos',
   'paute',
+  'tena',
+  'pifo',
   'baños',
   'portoviejo',
   'galápagos',
@@ -155,6 +158,7 @@ const citiesAndProvinces = [
   'pichincha',
   'guayas',
   'tungurahua',
+  'orellana',
   'ecuador',
 ];
 
@@ -256,7 +260,7 @@ function linkedInJobs() {
   return empleosOfLinkedIn;
 }
 
-// Funciones para empleos de Jooble
+// NOTE: Funciones para empleos de Jooble
 const getChildElementCountJooble = (empleo) => {
   return empleo.children[1].children[1].children[0].childElementCount === 3 ? true : false;
 };
@@ -307,6 +311,59 @@ function joobleJobs() {
   return empleosOfJooble;
 }
 
+// Función para empleos de Multitrabajos
+
+const getBusinessOrLocation = (empleo) => {
+  if (empleo.children[0].childElementCount === 1) {
+    return true;
+  } else if (empleo.children[0].childElementCount === 2) {
+    return false;
+  } else {
+    return 3;
+  }
+};
+
+function multitrabajosFindJobs() {
+  let empleosOfMultitrabajos = [];
+  const listaEmpleos = document.querySelectorAll('.Card__CardComponentWrapper-sc-i6v2cb-0.kSZvum a');
+
+  listaEmpleos.forEach((empleo) => {
+    let vacante = empleo.children[1].children[0].outerText;
+    let empresa = '';
+    let ubicacion = '';
+    let linkOfJob = empleo.href;
+
+    if (getBusinessOrLocation(empleo) === true) {
+      empresa = 'Multitrabajos';
+      ubicacion = empleo.children[0].children[0].outerText;
+    } else if (getBusinessOrLocation(empleo) === false) {
+      empresa = empleo.children[0].children[0].outerText;
+      ubicacion = empleo.children[0].children[1].outerText;
+    } else if (getBusinessOrLocation(empleo) === 3) {
+      empresa = empleo.children[0].children[1].outerText;
+      ubicacion = empleo.children[0].children[2].outerText;
+    }
+
+    empleosOfMultitrabajos.push({
+      'Fecha de Publicación de la Vacante': getDate(),
+      Cargo: vacante,
+      Area: isArea(vacante),
+      Empresa: empresa,
+      Industria: industria[Math.floor(Math.random() * industria.length)],
+      'Link de la Oferta': linkOfJob,
+      Nivel: isNivel(vacante),
+      Ubicación: getUbicacion(ubicacion),
+    });
+  });
+
+  return empleosOfMultitrabajos;
+}
+
+// TODO: Función para empleos de Computrabajos
+function computrabajosFindJobs() {
+  const datos = document.querySelectorAll('.iO');
+}
+
 const URL = window.location.href;
 
 function findJobs(URL) {
@@ -315,17 +372,15 @@ function findJobs(URL) {
       copy(linkedInJobs());
       break;
     case URL.includes('multitrabajos'):
-      multitrabajosFindJobs();
+      copy(multitrabajosFindJobs());
       break;
     case URL.includes('jooble'):
       copy(joobleJobs());
       break;
     case URL.includes('computrabajo'):
-      computrabajosFindJobs();
+      copy(computrabajosFindJobs());
       break;
   }
 }
 
 findJobs(URL);
-
-// TODO: Es necesario crear la lógica para comprobar el nivel y el área del trabajo

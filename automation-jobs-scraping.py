@@ -17,7 +17,10 @@ links = [
     "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=106373116&keywords=innovaci%C3%B3n&location=Ecuador",
     "https://ec.jooble.org/SearchResult?date=8&ukw=tecnolog%C3%ADa",
     "https://ec.jooble.org/SearchResult?date=8&ukw=developer",
-    "https://ec.jooble.org/SearchResult?date=8&p=2&ukw=ventas"
+    "https://ec.jooble.org/SearchResult?date=8&p=2&ukw=ventas",
+    "https://www.multitrabajos.com/empleos-publicacion-hoy.html",
+    "https://www.computrabajo.com.ec/empleos-de-informatica-y-telecom-hoy",
+    ""
 ]
 
 for link in links:  
