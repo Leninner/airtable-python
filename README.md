@@ -2,13 +2,40 @@
 
 Automatización con uso de Pyautogui, python, javascript, node.js, git.
 
+[NOTE]: Es de suma importancia tener instalado la última versión de todo: node, npm, pip, python.
+
 Ejecuta
 
 ```bash
 npm install
 ```
 
-Para instalar todas las dependencias del proyecto.
+Para instalar todas las dependencias javascript del proyecto.
+
+## Paquetes de python utilizados
+
+```py
+import pyautogui
+from selenium import webdriver
+from time import sleep
+import pyperclip as clipboard
+import os
+```
+
+Para instalarlos con pip:
+
+```bash
+pip install pyautogui => Windows
+pip3 install pyautogui => Linux
+pip install selenium
+pip install pyperclip
+```
+
+Chromedriver para selenium:
+
+> https://sites.google.com/a/chromium.org/chromedriver/downloads
+
+NOTE => Comprobar la versión con el navegador
 
 ## Notas y aprendizajes del proyecto
 

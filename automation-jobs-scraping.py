@@ -2,31 +2,32 @@ import pyautogui
 from selenium import webdriver
 from time import sleep
 import pyperclip as clipboard
+import os
 
 links = [
     "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=106373116&keywords=direcci%C3%B3n&location=Ecuador",
-    # "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=106373116&keywords=marketing&location=ecuador",
-    # "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=106373116&keywords=tecnolog%C3%ADa&location=ecuador"
-    # "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=106373116&keywords=ventas&location=Ecuador",
-    # "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=106373116&keywords=contabilidad&location=Ecuador",
-    # "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=106373116&keywords=finanzas&location=Ecuador",
-    # "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=106373116&keywords=log%C3%ADstica&location=Ecuador",
-    # "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=106373116&keywords=developer&location=Ecuador",
-    # "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=106373116&keywords=produccion%20audiovisual&location=Ecuador",
-    # "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=106373116&keywords=produccion&location=Ecuador",
-    # "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=106373116&keywords=innovaci%C3%B3n&location=Ecuador",
-    # "https://ec.jooble.org/SearchResult?date=8&ukw=tecnolog%C3%ADa",
-    # "https://ec.jooble.org/SearchResult?date=8&ukw=developer",
-    # "https://ec.jooble.org/SearchResult?date=8&p=2&ukw=ventas",
-    # "https://www.multitrabajos.com/empleos-publicacion-hoy.html",
-    # "https://www.computrabajo.com.ec/empleos-de-informatica-y-telecom-hoy",
-    # "https://www.computrabajo.com.ec/empleos-de-recursos-humanos-hoy",
-    # "https://www.computrabajo.com.ec/empleos-de-marketing-y-ventas-hoy",
-    # "https://www.computrabajo.com.ec/empleos-de-atencion-a-clientes-hoy",
-    # "https://www.computrabajo.com.ec/empleos-de-administracion-y-oficina-hoy",
-    # "https://www.computrabajo.com.ec/empleos-de-cientifico-y-investigacion-hoy",
-    # "https://www.computrabajo.com.ec/empleos-de-arte-y-diseno-y-medios-hoy",
-    # "https://www.computrabajo.com.ec/empleos-de-almacen-logistica-hoy"
+    "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=106373116&keywords=marketing&location=ecuador",
+    "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=106373116&keywords=tecnolog%C3%ADa&location=ecuador"
+    "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=106373116&keywords=ventas&location=Ecuador",
+    "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=106373116&keywords=contabilidad&location=Ecuador",
+    "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=106373116&keywords=finanzas&location=Ecuador",
+    "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=106373116&keywords=log%C3%ADstica&location=Ecuador",
+    "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=106373116&keywords=developer&location=Ecuador",
+    "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=106373116&keywords=produccion%20audiovisual&location=Ecuador",
+    "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=106373116&keywords=produccion&location=Ecuador",
+    "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=106373116&keywords=innovaci%C3%B3n&location=Ecuador",
+    "https://ec.jooble.org/SearchResult?date=8&ukw=tecnolog%C3%ADa",
+    "https://ec.jooble.org/SearchResult?date=8&ukw=developer",
+    "https://ec.jooble.org/SearchResult?date=8&p=2&ukw=ventas",
+    "https://www.multitrabajos.com/empleos-publicacion-hoy.html",
+    "https://www.computrabajo.com.ec/empleos-de-informatica-y-telecom-hoy",
+    "https://www.computrabajo.com.ec/empleos-de-recursos-humanos-hoy",
+    "https://www.computrabajo.com.ec/empleos-de-marketing-y-ventas-hoy",
+    "https://www.computrabajo.com.ec/empleos-de-atencion-a-clientes-hoy",
+    "https://www.computrabajo.com.ec/empleos-de-administracion-y-oficina-hoy",
+    "https://www.computrabajo.com.ec/empleos-de-cientifico-y-investigacion-hoy",
+    "https://www.computrabajo.com.ec/empleos-de-arte-y-diseno-y-medios-hoy",
+    "https://www.computrabajo.com.ec/empleos-de-almacen-logistica-hoy"
 ]
 
 for link in links:  
@@ -55,6 +56,11 @@ clipboard.copy(texto)
 copiar.write(clipboard.paste())
 moreCode.close()
 copiar.close()
+
+RUTA_ARCHIVO = "C:/Users/USUARIO/Desktop/Automation/src/jobs.js"
+os.system(f'start {os.path.realpath(RUTA_ARCHIVO)}')
+pyautogui.click(500, 200)
+pyautogui.hotkey("ctrl", "capslock")
 
 
 print("********** Búsqueda de empleos exitosa **********")

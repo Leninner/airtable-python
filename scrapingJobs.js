@@ -1,5 +1,6 @@
 const tecnologia = [
   'aws',
+  'data',
   'java',
   'developer',
   'front-end',
@@ -44,17 +45,21 @@ const ventas = [
   'mercadeo',
   'venta',
   'vendedores',
+  'vendedora',
+  'vendedor/a',
   'sales',
   'selling',
   'mercaderista',
 ];
 const marketing = [
   'marketing',
+  'diseñador',
   'brand',
   'planner',
   'community',
   'lead',
   'ads',
+  'gráfico',
   'operations',
   'manager',
   'creativa',
@@ -70,7 +75,7 @@ const marketing = [
   'designer',
   'packaging',
 ];
-const innovacion = ['scrum', 'CTO', 'innovación', 'innovacion', 'product', 'owner', 'associate'];
+const innovacion = ['scrum', 'CTO', 'innovación', 'innovacion', 'product', 'owner', 'associate', 'chief'];
 const logistica = ['logistica', 'logística', 'bodega', 'calidad'];
 const finanzas = [
   'auditoría',
@@ -106,6 +111,9 @@ const pasantias = ['pasante', 'pasantías', 'pasantias', 'pasantía', 'pasantia'
 
 const rrhh = [
   'recruiter',
+  'interviewer',
+  'interviews',
+  'entrevistas',
   'reclutador',
   'humanos',
   'business',
