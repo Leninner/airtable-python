@@ -59,7 +59,9 @@ copiar.close()
 
 RUTA_ARCHIVO = "C:/Users/USUARIO/Desktop/Automation/src/jobs.js"
 os.system(f'start {os.path.realpath(RUTA_ARCHIVO)}')
+sleep(1)
 pyautogui.click(500, 200)
+sleep(1)
 pyautogui.hotkey("ctrl", "capslock")
 
 
