@@ -1,5 +1,7 @@
 # airtable-python
 
+> Solo ejecutar el archivo: **automation-jobs-scraping.py** y mirar la magia.
+
 Automatización con uso de Pyautogui, python, javascript, node.js, git.
 
 [NOTE]: Es de suma importancia tener instalado la última versión de todo: node, npm, pip, python.
