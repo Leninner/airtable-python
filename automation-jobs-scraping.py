@@ -41,6 +41,7 @@ for link in links:
     sleep(2)
     pyautogui.hotkey("ctrl", "v")
     pyautogui.hotkey("enter")
+    sleep(1)
     pyautogui.hotkey("alt", "tab")
     copiar = open("C:/Users/USUARIO/Desktop/Automation/src/jobs.js", "a+", encoding="utf8")
     copiar.write(clipboard.paste())
