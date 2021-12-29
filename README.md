@@ -51,3 +51,5 @@ NOTE => Comprobar la versión con el navegador
 - Cuando se utiliza open(archivo, modo, encoding), siempre es necesario escribir "encoding='utf8'" para evitar problemas con los carácteres especiales.
 
 ### Cada día se aprende algo nuevo. Jamás paremos de aprender
+
+- NOTA
