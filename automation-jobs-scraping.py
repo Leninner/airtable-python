@@ -37,12 +37,12 @@ for link in links:
     texto = archivo.read()
     clipboard.copy(texto)
     pyautogui.click(200, 200)
-    pyautogui.hotkey('ctrl', "shift", 'j') 
+    pyautogui.hotkey('command', 'option', 'j') 
     sleep(2)
-    pyautogui.hotkey("ctrl", "v")
+    pyautogui.hotkey("command", "v")
     pyautogui.hotkey("enter")
     sleep(1)
-    pyautogui.hotkey("alt", "tab")
+    pyautogui.hotkey("command", "tab")
     copiar = open("/Users/macbookpro/Desktop/airtable-python/src/jobs.js", "a+", encoding="utf8")
     copiar.write(clipboard.paste())
     copiar.write(",")
@@ -63,7 +63,9 @@ os.system(f'start {os.path.realpath(RUTA_ARCHIVO)}')
 sleep(5)
 pyautogui.click(500, 200)
 sleep(5)
-pyautogui.hotkey("ctrl", "capslock")
+
+# configurar el método para ejecutar un archivo en mac
+pyautogui.hotkey("command", "capslock")
 
 
 print("********** Búsqueda de empleos exitosa **********")
