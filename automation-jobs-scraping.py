@@ -30,6 +30,11 @@ links = [
     # "https://www.computrabajo.com.ec/empleos-de-almacen-logistica-hoy"
 ]
 
+firstStep = open("/Users/macbookpro/Desktop/airtable-python/utils/firstStep.js", "r")
+firstStepRead = firstStep.read()
+firstStepMain = open("/Users/macbookpro/Desktop/airtable-python/src/jobs.js", "a+", encoding="utf8")
+firstStepMain.write(firstStepRead)
+
 for link in links:  
     driver = webdriver.Chrome("/Users/macbookpro/Desktop/chromedriver")
     driver.get(link)

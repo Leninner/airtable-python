@@ -240,32 +240,37 @@ const getChildElementCount = (value, empleo) => {
 };
 
 function linkedInJobs() {
-  let empleosOfLinkedIn = [];
-  let listaEmpleos = document.querySelectorAll('.jobs-search__results-list li');
+  try {
+    let empleosOfLinkedIn = [];
+    let listaEmpleos = document.querySelectorAll('.jobs-search__results-list li');
 
-  listaEmpleos.forEach((empleo) => {
-    let vacante = getChildElementCount('vacante', empleo);
-    let empresa = getChildElementCount('empresa', empleo);
-    let ubicacion =
-      empleo.children[0].childElementCount === 3
-        ? empleo.children[0].children[2].children[2].children[0].outerText
-        : empleo.children[0].children[1].children[2].children[0].outerText;
-    let linkOfJob =
-      empleo.children[0].childElementCount === 3 ? empleo.children[0].children[0].href : empleo.children[0].href;
+    listaEmpleos.forEach((empleo) => {
+      let vacante = getChildElementCount('vacante', empleo);
+      let empresa = getChildElementCount('empresa', empleo);
+      let ubicacion =
+        empleo.children[0].childElementCount === 3
+          ? empleo.children[0].children[2].children[2].children[0].outerText
+          : empleo.children[0].children[1].children[2].children[0].outerText;
+      let linkOfJob =
+        empleo.children[0].childElementCount === 3 ? empleo.children[0].children[0].href : empleo.children[0].href;
 
-    empleosOfLinkedIn.push({
-      'Fecha de Publicación de la Vacante': getDate(),
-      Cargo: vacante,
-      Area: isArea(vacante),
-      Empresa: empresa,
-      Industria: industria[Math.floor(Math.random() * industria.length)],
-      'Link de la Oferta': linkOfJob,
-      Nivel: isNivel(vacante),
-      Ubicación: getUbicacion(ubicacion),
+      empleosOfLinkedIn.push({
+        'Fecha de Publicación de la Vacante': getDate(),
+        Cargo: vacante,
+        Area: isArea(vacante),
+        Empresa: empresa,
+        Industria: industria[Math.floor(Math.random() * industria.length)],
+        'Link de la Oferta': linkOfJob,
+        Nivel: isNivel(vacante),
+        Ubicación: getUbicacion(ubicacion),
+      });
     });
-  });
 
-  return empleosOfLinkedIn;
+    return empleosOfLinkedIn;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
 }
 
 // NOTE: Funciones para empleos de Jooble
