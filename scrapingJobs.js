@@ -283,45 +283,50 @@ const getRemoteElementCount = (empleo) => {
 };
 
 function joobleJobs() {
-  let empleosOfJooble = [];
-  let listaEmpleos = document.querySelectorAll('._2caa5._5d7c4');
+  try {
+    let empleosOfJooble = [];
+    let listaEmpleos = document.querySelectorAll('._2caa5._5d7c4');
 
-  listaEmpleos.forEach((empleo) => {
-    let vacante = empleo.children[0].children[0].outerText;
-    let empresa = '';
-    let ubicacion = '';
-    let linkOfJob = empleo.children[0].children[0].children[0].href;
+    listaEmpleos.forEach((empleo) => {
+      let vacante = empleo.children[0].children[0].outerText;
+      let empresa = '';
+      let ubicacion = '';
+      let linkOfJob = empleo.children[0].children[0].children[0].href;
 
-    // Comprobar si es un trabajo remoto o no
-    if (getRemoteElementCount(empleo)) {
-      empresa = getChildElementCountJooble(empleo)
-        ? empleo.children[1].children[1].children[0].children[0].outerText
-        : 'Jooble';
-
-      ubicacion = getChildElementCountJooble(empleo)
-        ? empleo.children[1].children[1].children[0].children[1].outerText
-        : empleo.children[1].children[1].children[0].children[0].outerText;
-    } else {
-      empresa =
-        empleo.children[1].children[1].children[1].childElementCount === 3
-          ? empleo.children[1].children[1].children[1].children[0].outerText
+      // Comprobar si es un trabajo remoto o no
+      if (getRemoteElementCount(empleo)) {
+        empresa = getChildElementCountJooble(empleo)
+          ? empleo.children[1].children[1].children[0].children[0].outerText
           : 'Jooble';
-      ubicacion = 'Remoto';
-    }
 
-    empleosOfJooble.push({
-      'Fecha de Publicación de la Vacante': getDate(),
-      Cargo: vacante,
-      Area: isArea(vacante),
-      Empresa: empresa,
-      Industria: industria[Math.floor(Math.random() * industria.length)],
-      'Link de la Oferta': linkOfJob,
-      Nivel: isNivel(vacante),
-      Ubicación: getUbicacion(ubicacion),
+        ubicacion = getChildElementCountJooble(empleo)
+          ? empleo.children[1].children[1].children[0].children[1].outerText
+          : empleo.children[1].children[1].children[0].children[0].outerText;
+      } else {
+        empresa =
+          empleo.children[1].children[1].children[1].childElementCount === 3
+            ? empleo.children[1].children[1].children[1].children[0].outerText
+            : 'Jooble';
+        ubicacion = 'Remoto';
+      }
+
+      empleosOfJooble.push({
+        'Fecha de Publicación de la Vacante': getDate(),
+        Cargo: vacante,
+        Area: isArea(vacante),
+        Empresa: empresa,
+        Industria: industria[Math.floor(Math.random() * industria.length)],
+        'Link de la Oferta': linkOfJob,
+        Nivel: isNivel(vacante),
+        Ubicación: getUbicacion(ubicacion),
+      });
     });
-  });
 
-  return empleosOfJooble;
+    return empleosOfJooble;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
 }
 
 // Función para empleos de Multitrabajos
@@ -337,76 +342,87 @@ const getBusinessOrLocation = (empleo) => {
 };
 
 function multitrabajosFindJobs() {
-  let empleosOfMultitrabajos = [];
-  const listaEmpleos = document.querySelectorAll('.Card__CardComponentWrapper-sc-i6v2cb-0.kSZvum a');
+  try {
+    let empleosOfMultitrabajos = [];
+    const listaEmpleos = document.querySelectorAll('.Card__CardComponentWrapper-sc-i6v2cb-0.kSZvum a');
 
-  listaEmpleos.forEach((empleo) => {
-    let vacante = empleo.children[1].children[0].outerText;
-    let empresa = '';
-    let ubicacion = '';
-    let linkOfJob = empleo.href;
+    listaEmpleos.forEach((empleo) => {
+      let vacante = empleo.children[1].children[0].outerText;
+      let empresa = '';
+      let ubicacion = '';
+      let linkOfJob = empleo.href;
 
-    if (getBusinessOrLocation(empleo) === true) {
-      empresa = 'Multitrabajos';
-      ubicacion = empleo.children[0].children[0].outerText;
-    } else if (getBusinessOrLocation(empleo) === false) {
-      empresa = empleo.children[0].children[0].outerText;
-      ubicacion = empleo.children[0].children[1].outerText;
-    } else if (getBusinessOrLocation(empleo) === 3) {
-      empresa = empleo.children[0].children[1].outerText;
-      ubicacion = empleo.children[0].children[2].outerText;
-    }
+      if (getBusinessOrLocation(empleo) === true) {
+        empresa = 'Multitrabajos';
+        ubicacion = empleo.children[0].children[0].outerText;
+      } else if (getBusinessOrLocation(empleo) === false) {
+        empresa = empleo.children[0].children[0].outerText;
+        ubicacion = empleo.children[0].children[1].outerText;
+      } else if (getBusinessOrLocation(empleo) === 3) {
+        empresa = empleo.children[0].children[1].outerText;
+        ubicacion = empleo.children[0].children[2].outerText;
+      }
 
-    empleosOfMultitrabajos.push({
-      'Fecha de Publicación de la Vacante': getDate(),
-      Cargo: vacante,
-      Area: isArea(vacante),
-      Empresa: empresa,
-      Industria: industria[Math.floor(Math.random() * industria.length)],
-      'Link de la Oferta': linkOfJob,
-      Nivel: isNivel(vacante),
-      Ubicación: getUbicacion(ubicacion),
+      empleosOfMultitrabajos.push({
+        'Fecha de Publicación de la Vacante': getDate(),
+        Cargo: vacante,
+        Area: isArea(vacante),
+        Empresa: empresa,
+        Industria: industria[Math.floor(Math.random() * industria.length)],
+        'Link de la Oferta': linkOfJob,
+        Nivel: isNivel(vacante),
+        Ubicación: getUbicacion(ubicacion),
+      });
     });
-  });
 
-  return empleosOfMultitrabajos;
+    return empleosOfMultitrabajos;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
 }
 
-// TODO: Función para empleos de Computrabajos
+// Función para empleos de Computrabajos
+
 function computrabajosFindJobs() {
-  let empleosOfComputrabajos = [];
-  const listaEmpleos = document.querySelectorAll('.iO');
+  try {
+    let empleosOfComputrabajos = [];
+    const listaEmpleos = document.querySelectorAll('.iO');
 
-  listaEmpleos.forEach((empleo) => {
-    let vacante = '';
-    let empresa = '';
-    let ubicacion = '';
-    let linkOfJob = '';
-    if (empleo.childElementCount > 4) {
-      vacante = empleo.children[1].outerText;
-      empresa = empleo.children[2].children[0].outerText;
-      ubicacion = empleo.children[2].children[1].outerText;
-      linkOfJob = empleo.children[1].children[0].href;
-    } else {
-      vacante = empleo.children[0].outerText;
-      empresa = empleo.children[1].children[0].outerText;
-      ubicacion = empleo.children[1].children[1].outerText;
-      linkOfJob = empleo.children[0].children[0].href;
-    }
+    listaEmpleos.forEach((empleo) => {
+      let vacante = '';
+      let empresa = '';
+      let ubicacion = '';
+      let linkOfJob = '';
+      if (empleo.childElementCount > 4) {
+        vacante = empleo.children[1].outerText;
+        empresa = empleo.children[2].children[0].outerText;
+        ubicacion = empleo.children[2].children[1].outerText;
+        linkOfJob = empleo.children[1].children[0].href;
+      } else {
+        vacante = empleo.children[0].outerText;
+        empresa = empleo.children[1].children[0].outerText;
+        ubicacion = empleo.children[1].children[1].outerText;
+        linkOfJob = empleo.children[0].children[0].href;
+      }
 
-    empleosOfComputrabajos.push({
-      'Fecha de Publicación de la Vacante': getDate(),
-      Cargo: vacante,
-      Area: isArea(vacante),
-      Empresa: empresa,
-      Industria: industria[Math.floor(Math.random() * industria.length)],
-      'Link de la Oferta': linkOfJob,
-      Nivel: isNivel(vacante),
-      Ubicación: getUbicacion(ubicacion),
+      empleosOfComputrabajos.push({
+        'Fecha de Publicación de la Vacante': getDate(),
+        Cargo: vacante,
+        Area: isArea(vacante),
+        Empresa: empresa,
+        Industria: industria[Math.floor(Math.random() * industria.length)],
+        'Link de la Oferta': linkOfJob,
+        Nivel: isNivel(vacante),
+        Ubicación: getUbicacion(ubicacion),
+      });
     });
-  });
 
-  return empleosOfComputrabajos;
+    return empleosOfComputrabajos;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
 }
 
 const URL = window.location.href;
