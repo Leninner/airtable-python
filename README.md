@@ -12,7 +12,7 @@ Ejecuta
 npm install
 ```
 
-Para instalar todas las dependencias javascript del proyecto.
+Para instalar todas las dependencias del proyecto.
 
 ## Paquetes de python utilizados
 
@@ -49,7 +49,3 @@ NOTE => Comprobar la versión con el navegador
 - Utiliza la técnica del patito de hule.
 - Relativamente todo es posible con una gran pasión de por medio.
 - Cuando se utiliza open(archivo, modo, encoding), siempre es necesario escribir "encoding='utf8'" para evitar problemas con los carácteres especiales.
-
-### Cada día se aprende algo nuevo. Jamás paremos de aprender
-
-- NOTA
